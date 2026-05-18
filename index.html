@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>STUDYROOM</title>
+    <link rel="icon" type="mainlogo" href="logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+
+        body {
+            font-family: 'Google Sans', 'Roboto', sans-serif;
+            background-color: #1E1E2E;
+            margin: 0;
+            color: #194b72;
+        }
+
+        .navbar {
+            height: 64px;
+            background: #780116;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            border-bottom: 3px solid #F7B538;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 500;
+            color: #F7B538;
+            font-family: 'Bitcount Single', sans-serif;
+        }
+
+
+        .main-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 320px;
+            gap: 32px;
+            padding: 40px;
+            max-width: 1300px;
+            margin: auto;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: #F5F5F7;
+            padding: 32px;
+            border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+            transition: 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+        }rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1)rgba(0, 0, 0, 0.1)rgba(15, 98, 223, 0.1)rgba(15, 101, 230, 0.1)rgba(15, 101, 230, 0.178)
+
+
+        .storage {
+            border: 4px solid #F7B538;
+        }
+
+        .ai {  border: 4px solid #F7B538; }
+
+        .game { 
+            border: 4px solid #F7B538;
+         }
+         
+        .study{ 
+            border: 4px solid #F7B538;
+         }
+         
+         .storage{
+            border: 4px solid #F7B538;
+         }
+
+        .action-btn {
+            margin-top: 20px;
+            padding: 10px 24px;
+            border-radius: 20px;
+            border: 2px solid #F7B538;
+            background: #780116;
+            color: #F7B538;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .sticky-sidebar {
+            background: #780116;
+            padding: 24px;
+            border-radius: 20px;
+            border: 1px solid #780116;
+            height: fit-content;
+        }
+
+        .sticky-sidebar h3 {
+            color: #F7B538;
+            margin-top: 0;
+        }
+
+        .storage .action-btn {
+            border: 2px solid #F7B538;
+        }
+
+        .note-input-container {
+            display: flex;
+            background: #F7B538;
+            padding: 4px;
+            border-radius: 8px;
+        }
+
+        #noteInput {
+            border: none;
+            background: transparent;
+            padding: 10px;
+            flex-grow: 1;
+            outline: none;
+        }
+
+        .add-btn {
+            background: #000000;
+            color: white;
+            border: none;
+            width: 36px;
+            height: 36px;
+            cursor: pointer;
+        }
+
+        .note-item {
+            background: #f3de23ec;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .delete-note {
+            background: none;
+            border: none;
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Layout for mobile phones */
+        @media (max-width: 900px) {
+            .main-wrapper { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">STUDYROOM</div>
+    </nav>
+
+    <div class="main-wrapper">
+        
+        <div class="dashboard-grid">
+
+            <div class="card study">
+                <h3>STUDY PLACE</h3>
+                <p>Focus on your goals.</p>
+                <a href="timer.html" class="action-btn">Start Session</a>
+            </div>
+
+
+            <div class="card storage">
+                <h3>STORAGE</h3>
+                <p>Manage your assets..</p>
+                <a href="storage.html" class="action-btn">Organise Files</a>
+            </div>
+
+            <div class="card ai">
+                <h3>AI HELP</h3>
+                <p>Ask questions, brainstorm new ideas.</p>
+                <button class="action-btn">Talk to AI</button>
+            </div>
+
+            <div class="card game">
+                <h3>GAMEZONE</h3>
+                <p>REFRESH YOUR MIND.</p>
+                <button class="action-btn">Launch Library</button>
+            </div>
+        </div>
+
+        
+        <div class="sticky-sidebar">
+            <h3>Reminders</h3>
+            <div class="note-input-container">
+                <input type="text" id="noteInput" placeholder="New note...">
+                <button class="add-btn" onclick="addNote()">+</button>
+            </div>
+            <div id="noteList">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addNote() {
+            var input = document.getElementById('noteInput');
+            var list = document.getElementById('noteList');
+
+            if (input.value == "") {
+                alert("Please write something first!");
+            } else {
+
+                var div = document.createElement('div');
+                div.className = 'note-item';
+                
+                div.innerHTML = "<span>" + input.value + "</span><button class='delete-note' onclick='deleteThis(this)'>×</button>";
+
+                list.appendChild(div);
+
+                input.value = "";
+            }
+        }
+        function deleteThis(btn) {
+            var note = btn.parentElement;
+            note.remove();
+        }
+    </script>
+</body>
+</html>

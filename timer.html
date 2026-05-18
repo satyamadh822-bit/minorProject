@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Timer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+
+        body {
+            font-family: 'Google Sans', sans-serif;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .timer-box {
+            text-align: center;
+            background: #1E1E2E;
+            padding: 50px;
+            border: 4px solid #F7B538;
+            border-radius: 28px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        #display {
+            font-size: 100px; 
+            color: #fa000c;
+            margin: 20px 0;
+            font-family: 'impact', sans-serif;
+        }
+
+        .inputs { margin-bottom: 25px; }
+
+        input {
+            width: 70px;
+            padding: 10px;
+            font-size: 20px;
+            border: 2px solid #e8eaed;
+            border-radius: 12px;
+            text-align: center;
+            outline: none;
+        }
+
+        input:focus { border-color: #1a73e8; }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        button {
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .set { background: #1a73e8; color: white; }
+        .start { background: #34a853; color: white; }
+        .stop { background: #ea4335; color: white; }
+        .cancel { background: #5f6368; color: white; }
+
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+
+
+        .logo {
+            font-size: 30px;
+            font-weight: 500;
+            color: #F7B538;
+            padding: 14px 22px;
+             background: #780116;
+             margin:bottom 20px #F7B538 ;
+            font-family: 'Bitcount Single', sans-serif;
+            position: fixed;
+             left: 0;
+             top: 0;
+            height: 100vh;  
+            width: 70px;
+             display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transform: rotate(180deg);
+        writing-mode: vertical-rl;
+        }
+        
+    </style>
+
+
+</head>
+<body>
+
+<nav class="navbar">
+        <div class="logo">STUDY-TIMER</div>
+    </nav>
+
+<div class="timer-box">
+    <div class="inputs">
+        <input type="number" id="min" placeholder="Min">
+        <input type="number" id="sec" placeholder="Sec">
+    </div>
+
+    <!-- The area where the time numbers show up -->
+    <div id="display">00:00</div>
+
+    <div class="controls">
+        <button class="set" onclick="setTimer()">SET</button>
+        <button class="start" onclick="startTimer()">START</button>
+        <button class="stop" onclick="stopTimer()">STOP</button>
+        <button class="cancel" onclick="cancelTimer()">CANCEL</button>
+    </div>
+</div>
+
+<script>
+    // These are our main variables
+    var totalSeconds = 0;
+    var timerRunning = null;
+
+    // This function puts the numbers on the screen
+    function showTime() {
+        var m = Math.floor(totalSeconds / 60);
+        var s = totalSeconds % 60;
+
+        // If the number is less than 10, add a "0" in front of it
+        var displayMinutes = m;
+        if (m < 10) { displayMinutes = "0" + m; }
+
+        var displaySeconds = s;
+        if (s < 10) { displaySeconds = "0" + s; }
+
+        // Update the screen text
+        document.getElementById('display').innerHTML = displayMinutes + ":" + displaySeconds;
+    }
+
+    // Function to take numbers from boxes and save them
+    function setTimer() {
+        var m = parseInt(document.getElementById('min').value);
+        var s = parseInt(document.getElementById('sec').value);
+
+        // If a box is empty, use 0 instead of 'NaN'
+        if (isNaN(m)) { m = 0; }
+        if (isNaN(s)) { s = 0; }
+
+        totalSeconds = (m * 60) + s;
+        showTime();
+    }
+
+    // Function to start the countdown
+    function startTimer() {
+        // Don't start if time is 0
+        if (totalSeconds <= 0) {
+            return;
+        }
+
+        // Make sure only one timer runs at a time
+        clearInterval(timerRunning);
+
+        // Run this every 1000 milliseconds (1 second)
+        timerRunning = setInterval(function() {
+            totalSeconds = totalSeconds - 1;
+            showTime();
+
+            // Stop when we reach 0
+            if (totalSeconds <= 0) {
+                clearInterval(timerRunning);
+                alert("Time is up!");
+            }
+        }, 1000);
+    }
+
+    // Function to pause the timer
+    function stopTimer() {
+        clearInterval(timerRunning);
+    }
+
+    // Function to reset everything
+    function cancelTimer() {
+        clearInterval(timerRunning);
+        totalSeconds = 0;
+        showTime();
+        document.getElementById('min').value = "";
+        document.getElementById('sec').value = "";
+    }
+</script>
+
+</body>
+</html>
