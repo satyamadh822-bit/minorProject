@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>STUDYROOM</title>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="mainlogo" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,24 +14,23 @@
 
         body {
             font-family: 'Google Sans', 'Roboto', sans-serif;
-            background-color: #1E1E2E;
+            background-color: #E3E6EA;
             margin: 0;
-            color: #194b72;
         }
 
         .navbar {
             height: 64px;
-            background: #780116;
+            background: #FFFFFF;
             display: flex;
             align-items: center;
             padding: 0 24px;
-            border-bottom: 3px solid #F7B538;
+            border-bottom: 3px solid #555555;
         }
 
         .logo {
             font-size: 22px;
             font-weight: 500;
-            color: #F7B538;
+            color: #1A1A1A;
             font-family: 'Bitcount Single', sans-serif;
         }
 
@@ -69,53 +70,56 @@
             border: 4px solid #F7B538;
         }
 
-        .ai {  border: 4px solid #F7B538; }
+        .ai {  border: 4px solid #555555; }
 
         .game { 
-            border: 4px solid #F7B538;
+            border: 4px solid #555555;
          }
          
         .study{ 
-            border: 4px solid #F7B538;
+            border: 4px solid #555555;
          }
          
          .storage{
-            border: 4px solid #F7B538;
+            border: 4px solid #555555;
          }
 
         .action-btn {
             margin-top: 20px;
             padding: 10px 24px;
             border-radius: 20px;
-            border: 2px solid #F7B538;
-            background: #780116;
-            color: #F7B538;
+            border: 2px solid #555555;
+            background: #567363;
+            color: white;
             cursor: pointer;
             text-decoration: none;
         }
 
         .sticky-sidebar {
-            background: #780116;
+            background: #fff;
             padding: 24px;
             border-radius: 20px;
-            border: 1px solid #780116;
+           
             height: fit-content;
         }
 
         .sticky-sidebar h3 {
-            color: #F7B538;
+            color: black;
             margin-top: 0;
         }
 
         .storage .action-btn {
-            border: 2px solid #F7B538;
+            border: 2px solid #555555;
         }
 
         .note-input-container {
             display: flex;
-            background: #F7B538;
+            background: #FFFFFF;
+            border: 2px solid #555555;
             padding: 4px;
             border-radius: 8px;
+            height:fit-content;
+            width:fit-content contain;
         }
 
         #noteInput {
@@ -124,10 +128,12 @@
             padding: 10px;
             flex-grow: 1;
             outline: none;
+            height:fit-content;
+            width:fit-content contain;
         }
 
         .add-btn {
-            background: #000000;
+            background: #567363;
             color: white;
             border: none;
             width: 36px;
@@ -136,7 +142,7 @@
         }
 
         .note-item {
-            background: #f3de23ec;
+            background: #567363;
             padding: 12px;
             margin-top: 12px;
             border-radius: 8px;
@@ -156,6 +162,17 @@
         @media (max-width: 900px) {
             .main-wrapper { grid-template-columns: 1fr; }
         }
+
+        .footer {
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        background-color: #780116;
+        color:#F7B538;
+        font-size: 14px;
+        margin-top: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -184,13 +201,13 @@
             <div class="card ai">
                 <h3>AI HELP</h3>
                 <p>Ask questions, brainstorm new ideas.</p>
-                <button class="action-btn">Talk to AI</button>
+                <a href="ai.html" class="action-btn">Talk to AI</a>
             </div>
 
             <div class="card game">
                 <h3>GAMEZONE</h3>
-                <p>REFRESH YOUR MIND.</p>
-                <button class="action-btn">Launch Library</button>
+                <p>Refresh your mind.</p>
+                <a href="game.html" class="action-btn">Launch Library</a>
             </div>
         </div>
 
@@ -205,6 +222,10 @@
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+    <p>&copy; 2026 Satyam Adhikari. All rights reserved.</p>
+</footer>
 
     <script>
         function addNote() {

@@ -1,12 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Single:wght@100..900&family=Bitcount+Single:wght@100..900&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>AI HELP</title>
+    <style>
+        body {
+            font-family: 'Google Sans', sans-serif;
+            background-color:  #194b72;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            }
+
+
+        .msg {
+            font-size: 30px;
+            font-weight: 500;
+            color: #F7B538;
+            padding: 14px 22px;
+            background: #780116;
+            margin:bottom 20px #F7B538 ;
+            font-family: 'Bitcount Single', sans-serif;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;  
+            width: 70px;
+            display: flex;
+        justify-content: center;
+        align-items: center;
+
+        transform: rotate(180deg);
+        writing-mode: vertical-rl;
+        }
+
+        .chat-container { 
+            width: 600px;
+            max-width: 50%;
+            background: #780116;
+            padding: 30px;
+            border-radius: 15px;
+            border:solid 3px #F7B538;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            color: white;
+            margin: 0 auto;
+            justify-content: center;
+        }
+            
+        textarea { width: 100%; 
+            height: 100px; 
+            margin: 10px 0; 
+            padding: 15px; 
+            border: 2px solid #04326d; 
+            border-radius: 8px; 
+            box-sizing: border-box; 
+            resize: none; }
+
+        button { 
+            width: 25%; 
+            padding: 5px; 
+            background-color: #4285f4; 
+            color: white; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 16px;
+            margin:auto;
+            display:block;}
+
+        button:hover { 
+            background-color: #1b8eed; }
+
+    </style>
+
 </head>
 <body>
-    <h1>My Name is AI</h1>
-    <h2>My name is Satyam</h2>
+
+    <nav class="messege">
+        <div class="msg">ARTIFICIAL INTELLIGENCE</div>
+    </nav>
+   
+    <br>
+    <div class="chat-container">
+    <h2>Ask your Artificial Intelligence</h2>
+    <form id="geminiForm">
+        <textarea id="userQuestion" placeholder="Start Conversation..." required></textarea>
+        <button type="submit">ASK</button>
+    </form>
+</div>
 </body>
 </html>
