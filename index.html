@@ -5,7 +5,7 @@
     <title>STUDYROOM</title>
      <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="mainlogo" href="logo.png">
+    <link rel="icon" type="mainlogo" href="tt.jpg">
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,41 +18,96 @@
             margin: 0;
         }
 
-        .navbar {
-            height: 64px;
-            background: #FFFFFF;
-            display: flex;
-            align-items: center;
-            padding: 0 24px;
-            border-bottom: 3px solid #555555;
-        }
-
         .logo {
-            font-size: 22px;
+            font-size: 44px;
             font-weight: 500;
             color: #1A1A1A;
             font-family: 'Bitcount Single', sans-serif;
+            line-height: 0.8;
         }
 
+        .tageline{
+            margin-top: -5px;
+            margin-bottom: 5px;
+            font-family: 'Google Sans', sans-serif;
+        }
+
+         .sublogo{
+            font-family: 'Google Sans';
+            font-size: 14px;
+            color: #1A1A1A;
+            text-align:left;
+
+        }
+        
+        .welcontainer {
+  background-color: #567363; /* Dark green background */
+  color: white;
+  padding: 32px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  margin: auto;
+  max-width: 800px;
+  margin-top: 20px;
+  margin-left: 17px;       
+  margin-right: auto;
+  width: 100%;
+}
+
+.welmsg {
+  font-size: 48px;
+  margin: 0;
+}
+
+.weltag {
+  font-style: italic;
+  font-size: 18px;
+  max-width: 600px;
+}
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start; 
+        padding: 10px 20px;
+        width: 100%;
+        height: 8%;
+        box-sizing: border-box;
+        background-color: #ffff;
+        border-bottom: 4px solid #555555;
+        border-top: 4px solid #555555;
+}
+
+.logo-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+}
 
         .main-wrapper {
             display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 32px;
-            padding: 40px;
+            grid-template-columns: 1fr 120px;
+            gap: 10px;
+            padding: 20px;
             max-width: 1300px;
             margin: auto;
         }
 
         .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
+           display: grid;
+         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+        margin-top:auto;
+        margin-bottom:auto;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+        gap: 13px;
         }
 
         .card {
             background: #F5F5F7;
-            padding: 32px;
+            padding: 9px;
             border-radius: 20px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
             transition: 0.3s;
@@ -86,7 +141,7 @@
 
         .action-btn {
             margin-top: 20px;
-            padding: 10px 24px;
+            padding: 10px 14px;
             border-radius: 20px;
             border: 2px solid #555555;
             background: #567363;
@@ -110,6 +165,7 @@
 
         .storage .action-btn {
             border: 2px solid #555555;
+            padding: 10px 14px;
         }
 
         .note-input-container {
@@ -136,11 +192,11 @@
             background: #567363;
             color: white;
             border: none;
-            width: 36px;
-            height: 36px;
+            width: 10px;
+            height: 40px;
             cursor: pointer;
         }
-
+ 
         .note-item {
             background: #567363;
             padding: 12px;
@@ -152,8 +208,10 @@
 
         .delete-note {
             background: none;
+            height: 20px;
+            width: 20px;
             border: none;
-            color: red;
+            color: rgb(255, 3, 3);
             cursor: pointer;
             font-weight: bold;
         }
@@ -167,19 +225,76 @@
         width: 100%;
         padding: 10px 0;
         text-align: center;
-        background-color: #780116;
-        color:#F7B538;
+        background-color: #567363;
+        color:white;
         font-size: 14px;
         margin-top: auto;
         }
+
+.nav-links {
+  display: flex;    
+  align-items: center;   
+  justify-content: flex-end; 
+  list-style: none; 
+  padding: 0;  
+  margin: 0;
+  margin-left: auto;          
+  height: 100%; 
+  gap: 20px;   
+}
+
+.nav-links li {
+  display: flex;
+  align-items: center;
+}
+
+        .nav-links a {
+         text-decoration: none;
+         color: white;
+         padding: 8px 8px;
+         border-radius: 13px; 
+         border: 2px solid transparent; 
+         
+        }
+
+        .nav-links a.active {
+        border: 2px solid white;
+        }
+
+        .nav-links a:hover, .nav-links {
+        background-color: #567363;
+        border-radius: 12px;
+        padding: 11px 16px;
+        margin-bottom: 2px;
+        margin-top: 2px;
+        }
+
+       
 
     </style>
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">STUDYROOM</div>
-    </nav>
+
+    <div class="navbar">
+  <div class="logo-group">
+    <div class="logo">STUDYROOM</div>
+    <p class="tagline">Study Smarter, Not Harder</p>
+  </div>
+  
+  <div class="nav-links">
+    <li><a href="index.html" class="active">HOME</a></li>
+    <li><a href="#commits">COMMITS</a></li>
+  </div>
+</div>
+
+<div class="welcontainer">
+  <h1 class="welmsg">Welcome to Study Room</h1>
+  <p class="weltag">
+    <i>"The only way to do great work is to love what you do. 
+        Focus on the journey, not just the destination."</i>
+  </p>
+</div>
 
     <div class="main-wrapper">
         
@@ -200,7 +315,7 @@
 
             <div class="card ai">
                 <h3>AI HELP</h3>
-                <p>Ask questions, brainstorm new ideas.</p>
+                <p>Brainstorm new ideas.</p>
                 <a href="ai.html" class="action-btn">Talk to AI</a>
             </div>
 

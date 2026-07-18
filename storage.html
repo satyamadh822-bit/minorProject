@@ -12,7 +12,7 @@
 
         body {
             font-family: 'Google Sans', sans-serif;
-            background-color: white;
+            background-color: #E3E6EA;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,7 +25,7 @@
             color: #1E1E2E;
             background: #ffffff;
             padding: 50px;
-            border: 4px solid #F7B538;
+            border: 4px solid #555555;
             border-radius: 28px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
@@ -34,24 +34,24 @@
             padding: 10px 20px;
             color: white;
             background-color: #007bff;
-            border: none;
-            border-radius: 5px;
+            border: solid;
+            border-radius: 16px;
             cursor: pointer;
             font-family: sans-serif;
             font-weight: 600;
             transition: all 0.3s ease-in-out;
         }
         .btn:hover {
-            background-color: #ba0cdd;
+            background-color: #092ae9;
         }
 
         .logo {
             font-size: 30px;
             font-weight: 500;
-            color: #F7B538;
+            color: black;
             padding: 14px 22px;
-             background: #780116;
-             margin:bottom 20px #F7B538 ;
+             background: #567363;
+             margin:bottom 20px #555555;
             font-family: 'Bitcount Single', sans-serif;
             position: fixed;
              left: 0;
@@ -65,8 +65,8 @@
         transform: rotate(180deg);
         writing-mode: vertical-rl;
         }
-        
-    </style>
+
+</style>
 
 
 </head>
@@ -80,11 +80,20 @@
     <div class="container">
         <h1>SELECT YOUR MATERIALS</h1>
         <input type="file" id="real-file" hidden="hidden" multiple />
-<button type="button" id="custom-button" class="btn">Choose Files</button>
-  <span id="custom-text">No files chosen, yet.</span>
+
+        <input type="file" id="file-upload-input" style="display: none;" />
+        <label for="file-upload-input" class="btn">
+             Choose Files
+        </label>
+         <span id="custom-text">No files chosen, yet.</span>
         <div class="file-list" id="fileList"></div>
     </div>
 
-    
+   
+
+    <script>
+ 
+    </script>
+
 </body>
 </html>

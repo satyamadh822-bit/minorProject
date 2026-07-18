@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Tower of Hanoi</title>
+    <style>
+        body { display: flex; flex-direction: column; align-items: center; font-family: sans-serif; touch-action: manipulation; }
+        .towers { display: flex; justify-content: space-around; width: 100%; max-width: 600px; margin-top: 50px; }
+        .tower { width: 30%; height: 200px; border-bottom: 8px solid #333; display: flex; flex-direction: column-reverse; align-items: center; cursor: pointer; transition: background 0.3s; }
+        .tower:hover { background: #f0f0f0; }
+        .disk { height: 30px; background: #3498db; border-radius: 5px; margin-bottom: 2px; border: 1px solid #2980b9; }
+    </style>
+</head>
+<body>
+
+    <div class="towers">
+        <div class="tower" onclick="handleTowerClick(0)" id="t0"></div>
+        <div class="tower" onclick="handleTowerClick(1)" id="t1"></div>
+        <div class="tower" onclick="handleTowerClick(2)" id="t2"></div>
+    </div>
+
+    <script>
+        const towerElements = [document.getElementById('t0'), document.getElementById('t1'), document.getElementById('t2')];
+        let state = [[3, 2, 1], [], []];
+        let selectedTower = null;
+
+        function render() {
+            towerElements.forEach((el, i) => {
+                el.innerHTML = '';
+                state[i].forEach(size => {
+                    let d = document.createElement('div');
+                    d.className = 'disk';
+                    d.style.width = (size * 25) + 30 + 'px';
+                    el.appendChild(d);
+                });
+            });
+        }
+
+        function handleTowerClick(index) {
+            if (selectedTower === null) {
+                if (state[index].length > 0) selectedTower = index;
+            } else {
+                const from = selectedTower;
+                const to = index;
+                const disk = state[from][state[from].length - 1];
+                const targetTop = state[to][state[to].length - 1];
+
+                if (!targetTop || disk < targetTop) {
+                    state[to].push(state[from].pop());
+                }
+                selectedTower = null;
+            }
+            render();
+        }
+
+        render();
+    </script>
+</body>
+</html>
