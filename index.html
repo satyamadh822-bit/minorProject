@@ -50,7 +50,7 @@
   align-items: flex-start;
   gap: 10px;
   margin: auto;
-  max-width: 800px;
+  max-width: 1190px;
   margin-top: 20px;
   margin-left: 17px;       
   margin-right: auto;
@@ -87,6 +87,7 @@
   align-items: flex-start; 
 }
 
+
         .main-wrapper {
             display: grid;
             grid-template-columns: 1fr 120px;
@@ -107,13 +108,27 @@
 
         .card {
             background: #F5F5F7;
-            padding: 9px;
-            border-radius: 20px;
+            padding: 6px;
+            border-radius: 10px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.12);
             transition: 0.3s;
             display: flex;
             flex-direction: column;
+            gap: 8px;
         }
+
+        .card h3 {
+            margin: 0;
+            font-size: 20px;
+            color: #1A1A1A;
+        }
+
+        .card p {
+            margin: 0;
+            font-size: 14px;
+            color: #1A1A1A;
+        }
+
 
         .card:hover {
             transform: translateY(-5px);
@@ -122,25 +137,25 @@
 
 
         .storage {
-            border: 4px solid #F7B538;
+            border: 3px solid #F7B538;
         }
 
-        .ai {  border: 4px solid #555555; }
+        .ai {  border: 3px solid #555555; }
 
         .game { 
-            border: 4px solid #555555;
+            border: 3px solid #555555;
          }
          
         .study{ 
-            border: 4px solid #555555;
+            border: 3px solid #555555;
          }
          
          .storage{
-            border: 4px solid #555555;
+            border: 3px solid #555555;
          }
 
         .action-btn {
-            margin-top: 20px;
+            margin-top: 5px;
             padding: 10px 14px;
             border-radius: 20px;
             border: 2px solid #555555;
@@ -269,7 +284,70 @@
         margin-top: 2px;
         }
 
-       
+       .stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 17px;
+    margin-right: 0px;
+  max-width: 1250px;
+
+}
+
+.stat-card {
+  background: #F5F5F7;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  border: solid 2px #555555;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 10px 15px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+}
+
+.stat-card h3, 
+.stat-card p {
+  margin: 0; 
+}
+
+
+/* for responsive screen sizes */
+@media (max-width: 900px) {
+    .stats-grid, .welcontainer {
+        grid-template-columns: 1fr !important;
+        margin-left: 17px !important;
+        margin-right: 17px !important;
+        max-width: none !important;
+    }
+
+    .welcontainer {
+        align-items: center;
+        text-align: center;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .main-wrapper {
+        padding: 10px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .stats-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
 
     </style>
 </head>
@@ -289,11 +367,19 @@
 </div>
 
 <div class="welcontainer">
-  <h1 class="welmsg">Welcome to Study Room</h1>
+  <h1 class="welmsg">Welcome to Study Room!</h1>
   <p class="weltag">
     <i>"The only way to do great work is to love what you do. 
         Focus on the journey, not just the destination."</i>
   </p>
+</div>
+
+
+    <div class="stats-grid">
+  <div class="stat-card"><h3>Time</h3><p id="clock">00:00:00</p></div>
+  <div class="stat-card"><h3>Date</h3><p id="date">--/--/----</p></div>
+  <div class="stat-card"><h3>Days to Exam</h3><p id="exam-countdown">--</p></div>
+  <div class="stat-card"><h3>To-Do</h3><input type="text" placeholder="New task..."></div>
 </div>
 
     <div class="main-wrapper">
@@ -325,9 +411,9 @@
                 <a href="game.html" class="action-btn">Launch Library</a>
             </div>
         </div>
+    </div>
 
-        
-        <div class="sticky-sidebar">
+        <!-- <div class="sticky-sidebar">
             <h3>Reminders</h3>
             <div class="note-input-container">
                 <input type="text" id="noteInput" placeholder="New note...">
@@ -336,7 +422,7 @@
             <div id="noteList">
             </div>
         </div>
-    </div>
+    </div> -->
 
     <footer class="footer">
     <p>&copy; 2026 Satyam Adhikari. All rights reserved.</p>
@@ -365,6 +451,24 @@
             var note = btn.parentElement;
             note.remove();
         }
+
+// 1. Time and Date
+function updateDateTime() {
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toLocaleTimeString();
+  document.getElementById('date').textContent = now.toLocaleDateString();
+}
+setInterval(updateDateTime, 1000);
+
+// 2. Exam Countdown (Change the date below to your exam date)
+function updateExamCountdown() {
+  const examDate = new Date('2026-08-30'); // Example: Aug 30, 2026
+  const today = new Date();
+  const diff = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24));
+  document.getElementById('exam-countdown').textContent = diff + " days";
+}
+updateExamCountdown();
+
     </script>
 </body>
 </html>
